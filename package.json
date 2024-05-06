@@ -1,6 +1,6 @@
 {
-    "name": "lion",
-    "displayName": "lion",
+    "name": "libertas-object-notation",
+    "displayName": "Libertas Object Notation (Lion)",
     "description": "Language support for Libertas Object Notation (Lion)",
     "version": "0.0.1",
     "categories": [
@@ -10,7 +10,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Libertas007/lion"
+        "url": "https://github.com/Libertas007/lion-ext"
     },
     "publisher": "libertas",
     "keywords": [
