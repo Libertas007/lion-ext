@@ -1,0 +1,73 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "lion",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numbers"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control",
+                    "match": "@(doc|schema)\\b"
+                },
+                {
+                    "name": "keyword.control",
+                    "match": ":"
+                },
+                {
+                    "name": "comment.line",
+                    "match": "#.*"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.lion",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.lion",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric",
+                    "match": "\\b\\d+\\b"
+                },
+                {
+                    "name": "constant.numeric",
+                    "match": "\\b\\d+\\.\\d+\\b"
+                },
+                {
+                    "name": "constant.numeric",
+                    "match": "\\b0x[0-9a-fA-F]+\\b"
+                },
+                {
+                    "name": "constant.numeric",
+                    "match": "\\b0b[01]+\\b"
+                },
+                {
+                    "name": "constant.numeric",
+                    "match": "\\b0o[0-7]+\\b"
+                },
+                {
+                    "name": "constant.numeric",
+                    "match": "\\b0d[0-9]+\\b"
+                }
+            ]
+        }
+    },
+    "scopeName": "source.lion"
+}

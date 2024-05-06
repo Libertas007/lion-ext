@@ -1,0 +1,47 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "lios",
+    "patterns": [
+        {
+            "include": "#types"
+        },
+        {
+            "include": "#keywords"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control",
+                    "match": "@(definition|subschema|any)\\b"
+                },
+                {
+                    "name": "keyword.control",
+                    "match": "?"
+                },
+                {
+                    "name": "keyword.control",
+                    "match": ":"
+                },
+                {
+                    "name": "comment.line",
+                    "match": "#.*"
+                }
+            ]
+        },
+        "types": {
+            "patterns": [
+                {
+                    "name": "entity.name.class",
+                    "match": "\\b(Integer|String|Number|Float|Any|Boolean|Array)\\b"
+                },
+                {
+                    "name": "entity.name.class",
+                    "match": "\\b(?<=@subschema )\\w+\\b"
+                }
+            ]
+        }
+    },
+    "scopeName": "source.lios"
+}
