@@ -3,10 +3,10 @@
     "name": "lios",
     "patterns": [
         {
-            "include": "#types"
+            "include": "#keywords"
         },
         {
-            "include": "#keywords"
+            "include": "#types"
         }
     ],
     "repository": {

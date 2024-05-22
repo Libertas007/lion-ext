@@ -97,9 +97,9 @@ export function activate(context: ExtensionContext) {
         clientOptions
     );
 
-    client.onNotification("lion/lios", (message) => {
+    /* client.onNotification("lion/lios", (message) => {
         window.showWarningMessage(message);
-    });
+    }); */
 
     // Start the client. This will also launch the server
     client.start();

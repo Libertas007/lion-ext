@@ -20,7 +20,8 @@ import {
 import { URI, Utils } from "vscode-uri";
 
 import { TextDocument } from "vscode-languageserver-textdocument";
-import { analyzeText } from "lion-parser";
+import { analyzeSchema, analyzeText } from "lion-parser";
+import { LionError } from "lion-parser/dist/errors";
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
 const connection = createConnection(ProposedFeatures.all);
@@ -138,15 +139,13 @@ documents.onDidChangeContent((change) => {
 });
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
-    if (textDocument.languageId === "lios") {
-        connection.sendNotification(
-            "lion/lios",
-            "Support for Libertas Object Schema (lios) has not been implemented yet."
-        );
-        return;
-    }
+    let errors: LionError[] = [];
 
-    const errors = analyzeText(textDocument.getText());
+    if (textDocument.languageId === "lios") {
+        errors = analyzeSchema(textDocument.getText());
+    } else {
+        errors = analyzeText(textDocument.getText());
+    }
 
     console.log(errors);
 
@@ -218,6 +217,56 @@ connection.onCompletion(
         // which code complete got requested. For the example we ignore this
         // info and always provide the same completion items.
 
+        if (textDocumentPosition.textDocument.uri.endsWith(".lios")) {
+            return [
+                {
+                    label: "@definiton",
+                    kind: CompletionItemKind.Keyword,
+                    data: 1,
+                },
+                {
+                    label: "@subschema",
+                    kind: CompletionItemKind.Keyword,
+                    data: 2,
+                },
+                {
+                    label: "String",
+                    kind: CompletionItemKind.Class,
+                    data: 3,
+                },
+                {
+                    label: "Number",
+                    kind: CompletionItemKind.Class,
+                    data: 4,
+                },
+                {
+                    label: "Boolean",
+                    kind: CompletionItemKind.Class,
+                    data: 5,
+                },
+                {
+                    label: "Integer",
+                    kind: CompletionItemKind.Class,
+                    data: 6,
+                },
+                {
+                    label: "Float",
+                    kind: CompletionItemKind.Class,
+                    data: 7,
+                },
+                {
+                    label: "Array",
+                    kind: CompletionItemKind.Class,
+                    data: 8,
+                },
+                {
+                    label: "Any",
+                    kind: CompletionItemKind.Class,
+                    data: 9,
+                },
+            ];
+        }
+
         return [
             {
                 label: "@schema",
@@ -228,6 +277,16 @@ connection.onCompletion(
                 label: "@doc",
                 kind: CompletionItemKind.Keyword,
                 data: 2,
+            },
+            {
+                label: "true",
+                kind: CompletionItemKind.Constant,
+                data: 3,
+            },
+            {
+                label: "false",
+                kind: CompletionItemKind.Constant,
+                data: 4,
             },
         ];
     }

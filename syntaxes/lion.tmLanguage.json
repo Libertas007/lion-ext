@@ -10,6 +10,9 @@
         },
         {
             "include": "#numbers"
+        },
+        {
+            "include": "#schema"
         }
     ],
     "repository": {
@@ -26,6 +29,10 @@
                 {
                     "name": "comment.line",
                     "match": "#.*"
+                },
+                {
+                    "name": "constant",
+                    "match": "\\b(true|false)\\b"
                 }
             ]
         },
@@ -65,6 +72,14 @@
                 {
                     "name": "constant.numeric",
                     "match": "\\b0d[0-9]+\\b"
+                }
+            ]
+        },
+        "schema": {
+            "patterns": [
+                {
+                    "name": "meta.schema",
+                    "match": "(?<=@schema {).*(?=})"
                 }
             ]
         }

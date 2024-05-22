@@ -1,0 +1,12 @@
+{
+    "New document": {
+        "prefix": "@doc",
+        "body": ["@doc {", "$1", "}"],
+        "description": "Create a new document"
+    },
+    "New schema": {
+        "prefix": "@schema",
+        "body": ["@schema {", "\t@definition {", "\t\t$1", "\t}", "}"],
+        "description": "Create a new embedded schema"
+    }
+}

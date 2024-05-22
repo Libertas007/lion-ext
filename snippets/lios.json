@@ -1,0 +1,12 @@
+{
+    "New schema": {
+        "prefix": "@definition",
+        "body": ["@definition {", "$1", "}"],
+        "description": "Create a new schema"
+    },
+    "New subschema": {
+        "prefix": "@subschema",
+        "body": ["@subschema $1 {", "\t$2", "}"],
+        "description": "Create a new subschema"
+    }
+}

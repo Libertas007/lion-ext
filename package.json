@@ -2,7 +2,7 @@
     "name": "libertas-object-notation",
     "displayName": "Libertas Object Notation (Lion)",
     "description": "Language support for Libertas Object Notation (Lion)",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "categories": [
         "Programming Languages"
     ],
@@ -29,7 +29,11 @@
         "snippets": [
             {
                 "language": "lion",
-                "path": "./snippets/snippets.json"
+                "path": "./snippets/lion.json"
+            },
+            {
+                "language": "lios",
+                "path": "./snippets/lios.json"
             }
         ],
         "languages": [
@@ -58,14 +62,17 @@
         ],
         "grammars": [
             {
-                "language": "lion",
-                "scopeName": "source.lion",
-                "path": "./syntaxes/lion.tmLanguage.json"
-            },
-            {
                 "language": "lios",
                 "scopeName": "source.lios",
                 "path": "./syntaxes/lios.tmLanguage.json"
+            },
+            {
+                "language": "lion",
+                "scopeName": "source.lion",
+                "path": "./syntaxes/lion.tmLanguage.json",
+                "embeddedLanguages": {
+                    "meta.schema": "lios"
+                }
             }
         ],
         "configuration": {
